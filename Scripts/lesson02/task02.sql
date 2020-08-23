@@ -1,6 +1,6 @@
 /**
- * 2. Создайте базу данных example, разместите в ней таблицу users, 
- * состоящую из двух столбцов, числового id и строкового name.
+ * 2. РЎРѕР·РґР°Р№С‚Рµ Р±Р°Р·Сѓ РґР°РЅРЅС‹С… example, СЂР°Р·РјРµСЃС‚РёС‚Рµ РІ РЅРµР№ С‚Р°Р±Р»РёС†Сѓ users, 
+ * СЃРѕСЃС‚РѕВ¤С‰СѓСЋ РёР· РґРІСѓС… СЃС‚РѕР»Р±С†РѕРІ, С‡РёСЃР»РѕРІРѕРіРѕ id Рё СЃС‚СЂРѕРєРѕРІРѕРіРѕ name.
  */
 
 DROP DATABASE IF EXISTS example;
@@ -9,14 +9,14 @@ CREATE DATABASE example DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_
 DROP TABLE IF EXISTS example.users;
 CREATE TABLE IF NOT EXISTS example.users (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(255) COMMENT 'Имя'
-) ENGINE=INNODB COMMENT = 'Пользователи';
+  name VARCHAR(255) COMMENT 'РРјСЏ'
+) ENGINE=INNODB COMMENT = 'РџРѕР»СЊР·РѕРІР°С‚РµР»Рё';
 
 INSERT INTO example.users(name)
 VALUES 
-	('Иван'),
-	('Петр'),
-	('Ольга'),
-	('Павел'),
-	('Игнат'),
-	('Светлана');
+	('РРІР°РЅ'),
+	('РџРµС‚СЂ'),
+	('РћР»СЊРіР°'),
+	('РџР°РІРµР»'),
+	('РРіРЅР°С‚'),
+	('РЎРІРµС‚Р»Р°РЅР°');
