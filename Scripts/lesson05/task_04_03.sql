@@ -17,4 +17,10 @@ INSERT INTO tmp (digit) VALUES
   (3),
   (5);
  
-select round(exp(sum(ln(digit)))) from tmp;
+select round(exp(sum(ln(digit)))) multiplication from tmp;
+/*
+multiplication|
+--------------|
+          60.0|
+ */
+
