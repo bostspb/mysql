@@ -94,7 +94,7 @@ CREATE TABLE `sites` (
   `yandex_indexed` int(5) NOT NULL,
   `google_indexed` int(5) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `pages`;
@@ -112,17 +112,10 @@ CREATE TABLE `pages` (
   `calculator_header` varchar(128) NOT NULL,
   `banks_header` varchar(128) NOT NULL,
   `type` varchar(128) NOT NULL,
-  `tag` varchar(128) NOT NULL,
-  `tag_group` varchar(128) NOT NULL,
-  `tag_order` int(6) unsigned NOT NULL,
-  `filter_tags` varchar(255) NOT NULL DEFAULT '',
-  `tag_rules` varchar(255) NOT NULL DEFAULT '',
-  `tag_parent` varchar(128) NOT NULL DEFAULT '',
   `tag_id` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `type_IDX` (`type`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -163,7 +156,7 @@ CREATE TABLE `offers` (
   `top` varchar(32) NOT NULL,
   `test_links` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `credit_cards`;
@@ -180,7 +173,7 @@ CREATE TABLE `credit_cards` (
   `tags` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `offer_id` (`offer_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `debit_cards`;
@@ -197,7 +190,7 @@ CREATE TABLE `debit_cards` (
   `tags` text NOT NULL,
   `payment_systems` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `rko`;
@@ -213,7 +206,7 @@ CREATE TABLE `rko` (
   `description` text NOT NULL,
   `tags` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -233,7 +226,7 @@ CREATE TABLE `tags` (
   `parent_id` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `u_tag` (`offer_type`,`geo`,`title`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `offers_tags`;
@@ -241,7 +234,7 @@ CREATE TABLE `offers_tags` (
   `offer_id` int(11) NOT NULL,
   `tag_id` int(11) NOT NULL,
   PRIMARY KEY (`offer_id`,`tag_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `credit_cards_tags`;
@@ -249,7 +242,7 @@ CREATE TABLE `credit_cards_tags` (
   `credit_card_id` int(11) NOT NULL,
   `tag_id` int(11) NOT NULL,
   PRIMARY KEY (`credit_card_id`,`tag_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `debit_cards_tags`;
@@ -257,7 +250,7 @@ CREATE TABLE `debit_cards_tags` (
   `debit_card_id` int(11) NOT NULL,
   `tag_id` int(11) NOT NULL,
   PRIMARY KEY (`debit_card_id`,`tag_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `rko_tags`;
@@ -265,7 +258,7 @@ CREATE TABLE `rko_tags` (
   `rko_tarif_id` int(11) NOT NULL,
   `tag_id` int(11) NOT NULL,
   PRIMARY KEY (`rko_tarif_id`,`tag_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -334,7 +327,7 @@ CREATE TABLE `forms` (
   `bk_incorporate` varchar(128) NOT NULL,
   `inn` varchar(12) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `form_offers`;
@@ -363,7 +356,7 @@ CREATE TABLE `form_offers` (
   `email` varchar(256) NOT NULL,
   `dependencies` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `forms_epf`;
@@ -377,7 +370,7 @@ CREATE TABLE `forms_epf` (
   `update_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `form_type` (`form_type`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 --  
@@ -393,7 +386,7 @@ CREATE TABLE `cars` (
   `image` varchar(128) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `model_UN` (`model`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -413,7 +406,7 @@ CREATE TABLE `geo_fias` (
   `exbico_region_code` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `region_iso` (`region_iso`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `geo_vk`;
@@ -425,7 +418,7 @@ CREATE TABLE `geo_vk` (
   `region_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `city_id` (`city_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -447,7 +440,7 @@ CREATE TABLE `news` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `rss_url` (`rss_url`),
   KEY `category_link` (`category_link`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `news_host_link`;
@@ -458,7 +451,7 @@ CREATE TABLE `news_host_link` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `rss_url_host` (`rss_url`,`host`),
   KEY `host` (`host`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -491,7 +484,7 @@ CREATE TABLE `banks` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `bank_id` (`bank_id`,`licence`),
   UNIQUE KEY `link` (`link`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `bank_items`;
@@ -509,7 +502,7 @@ CREATE TABLE `bank_items` (
   KEY `item_id` (`item_id`,`bank_id`,`city_id`,`type`),
   KEY `bank_id` (`bank_id`),
   KEY `city_id` (`city_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `bank_cities`;
@@ -519,7 +512,7 @@ CREATE TABLE `bank_cities` (
   `city_name` varchar(128) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `city_id` (`city_id`,`city_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -538,7 +531,7 @@ CREATE TABLE `card_bins` (
   `category` varchar(64) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `bin` (`bin`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 --  
@@ -552,7 +545,7 @@ CREATE TABLE `settings` (
   `value` varchar(256) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `key` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -569,7 +562,7 @@ CREATE TABLE `offers_history` (
   `mct` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `offer_id_calc_date` (`offer_id`,`calc_date`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `offers_log`;
@@ -583,7 +576,7 @@ CREATE TABLE `offers_log` (
   `comment` text,
   PRIMARY KEY (`id`),
   KEY `offers_log_offer_id_IDX` (`offer_id`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='История изменений офферов';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='История изменений офферов';
 
 
 DROP TABLE IF EXISTS `offer_clicks`;
@@ -606,7 +599,7 @@ CREATE TABLE `offer_clicks` (
   PRIMARY KEY (`id`),
   KEY `offer_clicks_offer_id_IDX` (`offer_id`) USING BTREE,
   KEY `offer_clicks_date_IDX` (`date`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `postback`;
@@ -628,7 +621,7 @@ CREATE TABLE `postback` (
   KEY `click_id` (`click_id`),
   KEY `form_id` (`form_id`),
   KEY `postback_status_IDX` (`status`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `sites_visitors`;
@@ -639,7 +632,7 @@ CREATE TABLE `sites_visitors` (
   `yandex_metrika_id` varchar(10) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `this_date_ya_id` (`this_date`,`yandex_metrika_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
