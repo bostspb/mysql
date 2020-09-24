@@ -5,3 +5,14 @@
  *
  */
 
+/* 
+docker pull redis
+
+docker run --name redis_gb -d redis
+
+port 6379
+
+https://github.com/MicrosoftArchive/redis/releases
+
+cmd -> redis-cli
+*/
