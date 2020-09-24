@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagram version="1" name="02_er_diagram.erd">
+	<entities>
+		<data-source id="mariaDB-174b41534d7-1c502adedbd454ad">
+			<entity id="1" name="bank_cities" fq-name="credits2.bank_cities" order="0" x="212" y="555">
+				<path name="credits2"/>
+			</entity>
+			<entity id="2" name="bank_items" fq-name="credits2.bank_items" order="1" x="437" y="527">
+				<path name="credits2"/>
+			</entity>
+			<entity id="3" name="banks" fq-name="credits2.banks" order="2" x="436" y="23">
+				<path name="credits2"/>
+			</entity>
+			<entity id="4" name="card_bins" fq-name="credits2.card_bins" order="3" x="1144" y="173">
+				<path name="credits2"/>
+			</entity>
+			<entity id="5" name="cars" fq-name="credits2.cars" order="4" x="1280" y="36">
+				<path name="credits2"/>
+			</entity>
+			<entity id="6" name="credit_cards" fq-name="credits2.credit_cards" order="5" x="276" y="1337">
+				<path name="credits2"/>
+			</entity>
+			<entity id="7" name="credit_cards_tags" fq-name="credits2.credit_cards_tags" order="6" x="468" y="1493">
+				<path name="credits2"/>
+			</entity>
+			<entity id="8" name="debit_cards" fq-name="credits2.debit_cards" order="7" x="265" y="1921">
+				<path name="credits2"/>
+			</entity>
+			<entity id="9" name="debit_cards_tags" fq-name="credits2.debit_cards_tags" order="8" x="471" y="1785">
+				<path name="credits2"/>
+			</entity>
+			<entity id="10" name="form_offers" fq-name="credits2.form_offers" order="9" x="770" y="27">
+				<path name="credits2"/>
+			</entity>
+			<entity id="11" name="forms" fq-name="credits2.forms" order="10" border-width="3" x="1096" y="769">
+				<path name="credits2"/>
+			</entity>
+			<entity id="12" name="forms_epf" fq-name="credits2.forms_epf" order="11" x="1143" y="395">
+				<path name="credits2"/>
+			</entity>
+			<entity id="13" name="geo_fias" fq-name="credits2.geo_fias" order="12" x="939" y="373">
+				<path name="credits2"/>
+			</entity>
+			<entity id="14" name="geo_vk" fq-name="credits2.geo_vk" order="13" x="939" y="212">
+				<path name="credits2"/>
+			</entity>
+			<entity id="15" name="news" fq-name="credits2.news" order="14" x="32" y="24">
+				<path name="credits2"/>
+			</entity>
+			<entity id="16" name="news_host_link" fq-name="credits2.news_host_link" order="15" x="34" y="294">
+				<path name="credits2"/>
+			</entity>
+			<entity id="17" name="offer_clicks" fq-name="credits2.offer_clicks" order="16" x="706" y="1138">
+				<path name="credits2"/>
+			</entity>
+			<entity id="18" name="offers" fq-name="credits2.offers" order="17" x="25" y="806">
+				<path name="credits2"/>
+			</entity>
+			<entity id="19" name="offers_history" fq-name="credits2.offers_history" order="18" x="211" y="803">
+				<path name="credits2"/>
+			</entity>
+			<entity id="20" name="offers_log" fq-name="credits2.offers_log" order="19" x="362" y="802">
+				<path name="credits2"/>
+			</entity>
+			<entity id="21" name="offers_tags" fq-name="credits2.offers_tags" order="20" x="463" y="1341">
+				<path name="credits2"/>
+			</entity>
+			<entity id="22" name="pages" fq-name="credits2.pages" order="21" x="911" y="1574">
+				<path name="credits2"/>
+			</entity>
+			<entity id="23" name="postback" fq-name="credits2.postback" order="22" x="707" y="784">
+				<path name="credits2"/>
+			</entity>
+			<entity id="24" name="rko" fq-name="credits2.rko" order="23" x="276" y="1621">
+				<path name="credits2"/>
+			</entity>
+			<entity id="25" name="rko_tags" fq-name="credits2.rko_tags" order="24" x="472" y="1636">
+				<path name="credits2"/>
+			</entity>
+			<entity id="26" name="settings" fq-name="credits2.settings" order="25" x="1140" y="32">
+				<path name="credits2"/>
+			</entity>
+			<entity id="27" name="sites" fq-name="credits2.sites" order="26" x="209" y="23">
+				<path name="credits2"/>
+			</entity>
+			<entity id="28" name="sites_visitors" fq-name="credits2.sites_visitors" order="27" x="941" y="28">
+				<path name="credits2"/>
+			</entity>
+			<entity id="29" name="tags" fq-name="credits2.tags" order="28" x="709" y="1580">
+				<path name="credits2"/>
+			</entity>
+		</data-source>
+	</entities>
+	<relations>
+		<relation name="bi_city_id_FK" fq-name="credits2.bank_items.bi_city_id_FK" type="fk" pk-ref="1" fk-ref="2"/>
+		<relation name="s_city_id_FK" fq-name="credits2.sites.s_city_id_FK" type="fk" pk-ref="1" fk-ref="27"/>
+		<relation name="bi_bank_id_FK" fq-name="credits2.bank_items.bi_bank_id_FK" type="fk" pk-ref="3" fk-ref="2"/>
+		<relation name="cc_credit_card_id_FK" fq-name="credits2.credit_cards_tags.cc_credit_card_id_FK" type="fk" pk-ref="6" fk-ref="7"/>
+		<relation name="dc_debit_card_id_FK" fq-name="credits2.debit_cards_tags.dc_debit_card_id_FK" type="fk" pk-ref="8" fk-ref="9"/>
+		<relation name="oc_form_id_FK" fq-name="credits2.offer_clicks.oc_form_id_FK" type="fk" pk-ref="11" fk-ref="17"/>
+		<relation name="p_form_id_FK" fq-name="credits2.postback.p_form_id_FK" type="fk" pk-ref="11" fk-ref="23"/>
+		<relation name="nhl_news_id_FK" fq-name="credits2.news_host_link.nhl_news_id_FK" type="fk" pk-ref="15" fk-ref="16"/>
+		<relation name="p_click_id_FK" fq-name="credits2.postback.p_click_id_FK" type="fk" pk-ref="17" fk-ref="23"/>
+		<relation name="cc_offer_id_FK" fq-name="credits2.credit_cards.cc_offer_id_FK" type="fk" pk-ref="18" fk-ref="6"/>
+		<relation name="dc_offer_id_FK" fq-name="credits2.debit_cards.dc_offer_id_FK" type="fk" pk-ref="18" fk-ref="8"/>
+		<relation name="oc_offer_id_FK" fq-name="credits2.offer_clicks.oc_offer_id_FK" type="fk" pk-ref="18" fk-ref="17"/>
+		<relation name="oh_offer_id_FK" fq-name="credits2.offers_history.oh_offer_id_FK" type="fk" pk-ref="18" fk-ref="19"/>
+		<relation name="ol_offer_id_FK" fq-name="credits2.offers_log.ol_offer_id_FK" type="fk" pk-ref="18" fk-ref="20"/>
+		<relation name="ot_offer_id_FK" fq-name="credits2.offers_tags.ot_offer_id_FK" type="fk" pk-ref="18" fk-ref="21"/>
+		<relation name="p_offer_id_FK" fq-name="credits2.postback.p_offer_id_FK" type="fk" pk-ref="18" fk-ref="23"/>
+		<relation name="r_offer_id_FK" fq-name="credits2.rko.r_offer_id_FK" type="fk" pk-ref="18" fk-ref="24"/>
+		<relation name="r_rko_tarif_id_FK" fq-name="credits2.rko_tags.r_rko_tarif_id_FK" type="fk" pk-ref="24" fk-ref="25"/>
+		<relation name="nhl_site_id_FK" fq-name="credits2.news_host_link.nhl_site_id_FK" type="fk" pk-ref="27" fk-ref="16"/>
+		<relation name="cc_tag_id_FK" fq-name="credits2.credit_cards_tags.cc_tag_id_FK" type="fk" pk-ref="29" fk-ref="7"/>
+		<relation name="dc_tag_id_FK" fq-name="credits2.debit_cards_tags.dc_tag_id_FK" type="fk" pk-ref="29" fk-ref="9"/>
+		<relation name="ot_tag_id_FK" fq-name="credits2.offers_tags.ot_tag_id_FK" type="fk" pk-ref="29" fk-ref="21"/>
+		<relation name="pages_tag_FK" fq-name="credits2.pages.pages_tag_FK" type="fk" pk-ref="29" fk-ref="22"/>
+		<relation name="vfk_pages_tags" type="vfk" pk-ref="29" fk-ref="22"/>
+		<relation name="r_tag_id_FK" fq-name="credits2.rko_tags.r_tag_id_FK" type="fk" pk-ref="29" fk-ref="25"/>
+	</relations>
+</diagram>

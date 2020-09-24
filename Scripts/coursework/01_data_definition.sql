@@ -6,9 +6,12 @@
  * ---------------------------------------------------------
  * Спроектированния БД предназначена для мультисайтовой CMS, управляющей кредитными витринами.
  * Витрина представляет собой таблицу с набором офферов (кредитных предложений) с реферальными ссылками.
- * Набор офферов на витрине варьируется в зависимости от тематики страницы (тип кредита, тег и т.п.) и региона (один сайт - один город).
+ * Набор офферов на витрине зависимост от тематики страницы (тип кредита, тег и т.п.) и региона (один сайт - один город).
  * Порядок расположения офферов на витрине зависит от EPC оффера, т.е. его доходности.
  * Помимо страниц с витринами, каждый сайт имеет служебные страницы, блог, справочник банков и новостной раздел под свой город.
+ * 
+ * За основу была взята существующая БД, которая не имеет внешних ключей, триггеров, хранимых процедур/функций и представлений.
+ * Таким образом, в данном курсовом проекте осуществляется ее рефакторинг и оптимизация.
  */
 
 -- ---------------------------
@@ -80,7 +83,7 @@ CREATE TABLE `sites` (
   `city` varchar(32) NOT NULL,
   `city_name_rp` varchar(128) NOT NULL,
   `city_name_pp` varchar(128) NOT NULL,
-  `city_id` int(11) unsigned NOT NULL,
+  `city_id` int(11) unsigned,
   `footer_text` text NOT NULL,
   `address` text NOT NULL,
   `yandex_metrika_id` varchar(10) NOT NULL,
@@ -433,13 +436,11 @@ CREATE TABLE `geo_fias` (
 
 DROP TABLE IF EXISTS `geo_vk`;
 CREATE TABLE `geo_vk` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `city_id` int(11) unsigned NOT NULL,
+  `id` bigint unsigned NOT NULL,
   `city_name` varchar(128) NOT NULL,
   `region_iso` varchar(6) NOT NULL,
   `region_id` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `gv_city_id_IDX` (`city_id`) USING BTREE
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -511,7 +512,8 @@ CREATE TABLE `banks` (
 
 DROP TABLE IF EXISTS `bank_items`;
 CREATE TABLE `bank_items` (
-  `id` int(11) unsigned NOT NULL,  
+  `id` int(11) unsigned NOT NULL, 
+  `item_id` int(11) unsigned NOT NULL,
   `bank_id` int(11) unsigned NOT NULL,
   `city_id` int(11) unsigned NOT NULL,
   `type` varchar(16) NOT NULL,                            -- TODO: ENUM
@@ -520,6 +522,7 @@ CREATE TABLE `bank_items` (
   `latitude` varchar(16) NOT NULL,
   `longitude` varchar(16) NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `bi_item_id_type_IDX` (`item_id`,`type`) USING BTREE,
   KEY `bi_bank_id_city_id_IDX` (`bank_id`,`city_id`) USING BTREE,
   KEY `bi_bank_id_IDX` (`bank_id`) USING BTREE,
   KEY `bi_city_id_IDX` (`city_id`) USING BTREE,
