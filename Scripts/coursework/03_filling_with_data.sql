@@ -313,7 +313,10 @@ SET foreign_key_checks = 1;
 SET foreign_key_checks = 0;
 TRUNCATE TABLE credits2.postback;
 INSERT INTO credits2.postback (id,`date`,offer_id,cpa_name,cpa_offer_id,click_id,form_id,lead_id,order_id,status,`sum`,log)
-SELECT id,`date`,offer_id,cpa_name,cpa_offer_id,click_id,form_id,lead_id,order_id,status,`sum`,log
+SELECT id,`date`,offer_id,cpa_name,cpa_offer_id,
+	IF(click_id > 0, click_id, NULL),
+	IF(form_id > 0, form_id, NULL),
+	lead_id,order_id,status,`sum`,log
 FROM credits.postback;
 SET foreign_key_checks = 1;
 
