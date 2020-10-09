@@ -34,8 +34,8 @@ SET foreign_key_checks = 1;
 
 SET foreign_key_checks = 0;
 TRUNCATE TABLE credits2.pages;
-INSERT INTO credits2.pages (id,host,link,title,h1,meta_description,image,anons,main_content,offers_header,calculator_header,banks_header,`type`,tag_id)
-SELECT id,host,link,title,h1,meta_description,image,anons,main_content,offers_header,calculator_header,banks_header,`type`,tag_id
+INSERT INTO credits2.pages (id,host,link,title,h1,meta_description,image,anons,main_content,offers_header,calculator_header,banks_header,`type`,tag_id,filter_tags)
+SELECT id,host,link,title,h1,meta_description,image,anons,main_content,offers_header,calculator_header,banks_header,`type`,tag_id,filter_tags
 FROM credits.pages;
 SET foreign_key_checks = 1;
 
@@ -213,7 +213,7 @@ SELECT id,host,title,`date`,category,category_link,rss_url,rss_name,main_content
 FROM credits.news;
 SET foreign_key_checks = 1;
 
-
+/*
 SET foreign_key_checks = 0;
 TRUNCATE TABLE credits2.news_host_link;
 INSERT INTO credits2.news_host_link (news_id,site_id)
@@ -222,7 +222,14 @@ FROM credits.news_host_link nhl
 LEFT JOIN credits.news n ON n.rss_url = nhl.rss_url
 LEFT JOIN credits.sites s ON s.host = nhl.host;
 SET foreign_key_checks = 1;
+*/
 
+SET foreign_key_checks = 0;
+TRUNCATE TABLE credits2.news_host_link;
+INSERT INTO credits2.news_host_link (id,rss_url,host)
+SELECT id,rss_url,host
+FROM credits.news_host_link;
+SET foreign_key_checks = 1;
 
 
 --  

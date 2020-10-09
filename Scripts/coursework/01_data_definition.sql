@@ -119,6 +119,7 @@ CREATE TABLE `pages` (
   `banks_header` varchar(128) NOT NULL,
   `type` varchar(128) NOT NULL,
   `tag_id` int(11) unsigned DEFAULT NULL,
+  `filter_tags` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `p_type_IDX` (`type`) USING BTREE,
   KEY `p_tag_FK` (`tag_id`) USING BTREE,
@@ -466,6 +467,8 @@ CREATE TABLE `news` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
+
+/*
 DROP TABLE IF EXISTS `news_host_link`;
 CREATE TABLE `news_host_link` (  
   `news_id` bigint unsigned NOT NULL,
@@ -476,8 +479,17 @@ CREATE TABLE `news_host_link` (
   CONSTRAINT `nhl_news_id_FK` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `nhl_site_id_FK` FOREIGN KEY (`site_id`) REFERENCES `sites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+*/
 
-
+DROP TABLE IF EXISTS `news_host_link`;
+CREATE TABLE `news_host_link` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `rss_url` varchar(128) NOT NULL,
+  `host` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nhl_rss_url_host_IDX` (`rss_url`,`host`),
+  KEY `nhl_host_IDX` (`host`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --  
 --  8. Справочник банков
